@@ -11,6 +11,8 @@ def is_valid(number_input, first, end):
     """
     return number_input.isdigit() and first.isdigit() and end.isdigit() and int(first) <= int(number_input) <= int(end)
 
+def game_zabava():
+    print('pass')
 
 def game_player():
     """
@@ -49,6 +51,9 @@ def game_player():
 
     if input('Хочешь сыграть еще раз?').lower() in ['да', 'lf']:
         game_player()
+    else:
+        if input('А давай поменяемся: ты будешь загадывать, а я отгадывать?/nНапиши: "да" или "нет"').lower() in ['да', 'lf']:
+            game_zabava()
 
 
 def greeting():
@@ -72,7 +77,7 @@ def answer():
 
 greeting()
 answer()
-print('До скорой встречи.')
+print('Заглядывай почаще.\nДо скорой встречи.')
 
 
 
