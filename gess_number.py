@@ -12,7 +12,46 @@ def is_valid(number_input, first, end):
     return number_input.isdigit() and first.isdigit() and end.isdigit() and int(first) <= int(number_input) <= int(end)
 
 def game_zabava():
-    print('pass')
+
+
+    def binary_search(start, end):
+
+        if start > end:
+            return None
+        mid = (start + end) // 2
+        print("Это число " + str(mid) + "?")
+        answer = input("Введите 'да', '>', '<': ")
+        binary_search.counter += 1
+        if answer == "да":
+            return mid
+        elif answer == ">":
+            return binary_search(mid + 1, end)
+        elif answer == "<":
+            return binary_search(start, mid - 1)
+        else:
+            print("Некорректный ввод")
+            return binary_search(start, end)
+
+    start = input('Введи начало диапазона:')
+    end = input('Введи конец диапазона:')
+    start = int(start)
+    end = int(end)
+    print(f'''Загадайте число от {start} до {end}. 
+    Если я удагаю число, напечатай: "да".
+    Если я укажу неверное число, используй знаки ">", "<" на клавиатуре , чтобы показать мне: твое число больше или меньше.''')
+    binary_search.counter = 0
+    result = binary_search(start, end)
+
+    if result is not None:
+        print(f'Компьютер угадал число: {result} за {binary_search.counter} попыток.')
+    else:
+        print("Компьютер не смог угадать число.")
+
+    if input('Хочешь сыграть еще раз?').lower() in ['да', 'lf']:
+        game_zabava()
+    else:
+        if input('Опять поменяемся: я буду загадывать, а ты отгадывать?/nНапиши: "да" или "нет"').lower() in ['да', 'lf']:
+            game_player()
 
 def game_player():
     """
@@ -23,7 +62,7 @@ def game_player():
     first = input('Введи начало диапазона:')
     end = input('Введи конец диапазона:')
     search_number = randint(int(first), int(end))
-    print(search_number)
+    # print(search_number)
     print(f'Я загадала число от {first} до {end }. Угадай его.\nВведи СТОП, если захочешь закончить игру.')
     counter = 0
     while True:
@@ -91,17 +130,6 @@ print('Заглядывай почаще.\nДо скорой встречи.')
 
 
 
-
-# left_exp = 0
-# right_exp = len(my_list_exp)
-# middle_exp = (right_exp+left_exp) // 2
-# print(left_exp, right_exp)
-# print(f'Under index {middle_exp} is number {my_list_exp[middle_exp]}')
-
-
-# def gess_number(number_input):
-#     if number_input == search_number:
-#         print('')
 
 
 
